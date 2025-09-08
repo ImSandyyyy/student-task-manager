@@ -1,0 +1,32 @@
+:root {
+    --md-sys-color-background: #10131b;
+    --md-sys-color-primary: hsl(223, 100%, 84%);
+    --hover-color: #2c2f38;
+    --md-sys-color-text: #ffffff;
+    --small-text-color: #e0e2ed;
+    --md-sys-color-on-surface: #ffffff;
+    --md-sys-color-surface: #1c1f28;
+    --option-cover-color: #414755;
+    --selected: #33353a;
+    --link-color: var(--md-sys-color-primary);
+    --note-border-color-hover: var(--md-sys-color-text);
+    --link-decoration: none;
+    --border-radius: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}

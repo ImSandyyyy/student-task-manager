@@ -1,0 +1,28 @@
+* {
+    font-family: "Google Sans", "Roboto", system-ui;
+    color: var(--md-sys-color-text);
+}
+
+.wrapper {
+    display: flex;
+    /* justify-content: space-around; */
+    gap: 2rem;
+    height: auto;
+    background-color: red;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-between;
+    height: 10dvh;
+    background-color: var(--md-sys-color-surface);
+}
+
+main {
+    border-radius: 1rem;
+    background-color: var(--md-sys-color-background);
+    flex: 1;
+    margin-bottom: 100px;
+}
