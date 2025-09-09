@@ -1,0 +1,38 @@
+main {
+  flex: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3rem;
+  width: 25dvw;
+  height: 50dvh;
+}
+
+main > h1 {
+    text-align: center;
+}
+
+input {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+input::placeholder {
+  color: white;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--button-accent);
+}
+
+button[type="submit"]:hover {
+  background-color: #615FFF;
+}

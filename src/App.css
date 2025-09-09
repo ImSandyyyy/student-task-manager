@@ -1,28 +1,88 @@
-* {
-    font-family: "Google Sans", "Roboto", system-ui;
-    color: var(--md-sys-color-text);
-}
-
 .wrapper {
     display: flex;
-    /* justify-content: space-around; */
     gap: 2rem;
-    height: auto;
-    background-color: red;
+    background-color: var(--md-sys-color-surface);
+    padding: 0rem 2rem 2rem 1.3rem;
+    height: 90dvh;
 }
 
 header {
     display: flex;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0rem 2rem 0rem 1rem;
     justify-content: space-between;
     height: 10dvh;
+    flex-shrink: 0;
     background-color: var(--md-sys-color-surface);
+    
 }
 
+header button span {
+    font-size: 1.8rem !important;
+}
 main {
     border-radius: 1rem;
     background-color: var(--md-sys-color-background);
     flex: 1;
-    margin-bottom: 100px;
+    padding: 2rem;
+}
+
+a {
+    text-decoration: none;
+    font-size: 3VH;
+    font-weight: bold;
+}
+
+button {
+    border: none;
+    padding: 1.5rem;
+    background-color: transparent;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+}
+
+button:active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+nav {
+    width: 11rem;
+}
+
+section > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+section:not(:first-child) > div {
+    margin-top: 1rem;
+}
+
+ul {
+    width: 100%;
+}
+
+li {
+    list-style: none;
+    font-weight: bold;
+}
+
+li button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    justify-content: flex-start;
+}
+
+li button p {
+    margin-left: 1rem;
 }
