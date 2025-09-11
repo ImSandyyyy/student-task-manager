@@ -1,0 +1,42 @@
+main.aboutUs h1 {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 60vh;
+}
+
+main.aboutUs img {
+  width: 17.708vw;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile > p:first-of-type {
+  line-height: 1.5;
+  font-size: 2rem;
+  font-weight: 650;
+}
+
+.profile > p:nth-of-type(2) {
+  line-height: 1.4;
+  font-size: 1.3rem;
+}
+
+.profile > h3 {
+  line-height: 1.7;
+  font-size: 1.3rem;
+  font-weight: bold;
+}

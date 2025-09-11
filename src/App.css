@@ -20,6 +20,7 @@ header {
 header button span {
     font-size: 1.8rem !important;
 }
+
 main {
     border-radius: 1rem;
     background-color: var(--md-sys-color-background);
@@ -27,9 +28,9 @@ main {
     padding: 2rem;
 }
 
-a {
+header > a {
     text-decoration: none;
-    font-size: 3VH;
+    font-size: 3vh;
     font-weight: bold;
 }
 

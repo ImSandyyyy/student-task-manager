@@ -1,9 +1,8 @@
 import './Overview.css';
 
 interface Options { 
-    pageName : string,
+    pageName : string;
 }
-
 
 const Overview = (props: Options) => {
     return (

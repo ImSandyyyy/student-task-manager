@@ -1,17 +1,27 @@
+import "./Prompt.css";
+
 interface Options {
-    type: React.HTMLInputTypeAttribute;
-    arg: string;
-    placeholder?: string;
-    id?: string;
+  type: React.HTMLInputTypeAttribute;
+  arg: string;
+  className?: string;
+  placeholder?: string;
+  id?: string;
+  required?: boolean;
 }
 
 const Prompt = (props: Options) => {
-    const idLower = (props.id ?? props.arg).toLowerCase();
+  const idLower = (props.id ?? props.arg).toLowerCase();
 
   return (
-    <div>
+    <div className={props.className ?? ""}>
       <label htmlFor={idLower}>{props.arg}</label>
-      <input type={props.type} name={props.arg} id={idLower} placeholder={props.placeholder} />
+      <input
+        type={props.type}
+        name={props.arg}
+        id={idLower}
+        placeholder={props.placeholder}
+        required={props.required}
+      />
     </div>
   );
 };

@@ -1,0 +1,47 @@
+form > div > label {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+/* Makes username label red (error) */
+form > div.error > label {
+    color: #ff6b6b;
+}
+
+/* ^ Da same but input */
+form > div.error > input {
+    border: 1px solid #ff6b6b;
+    outline: none;
+}
+
+/* Appends (Already taken) after username when "error" */
+form > div.error.taken > label::after {
+    content: " (Already taken)";
+}
+
+/* Makes username label yellow (warn) */
+form > div.warn > label {
+    color: #ffd93d;
+}
+
+/* ^ Da same but input */
+form > div.warn > input {
+    border: 1px solid #ffd93d;
+    outline: none;
+}
+
+/* Makes username label green (acceptable) */
+form > div.acceptable > label {
+    color: #6bcf7f;
+}
+
+/* ^ Da same but input */
+form > div.acceptable > input {
+    border: 1px solid #6bcf7f;
+    outline: none;
+}
+
+/* Appends (doesn't exist) after username when "error" */
+form > div.error.doesntExist > label::after {
+    content: " (doesn't exist)"
+}

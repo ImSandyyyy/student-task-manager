@@ -1,4 +1,4 @@
-main {
+main.login {
   flex: 0;
   position: absolute;
   top: 50%;
@@ -9,7 +9,7 @@ main {
   height: 50dvh;
 }
 
-main > h1 {
+main.login > h1 {
     text-align: center;
 }
 
@@ -35,4 +35,9 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #615FFF;
+}
+
+form > a {
+  display: flex;
+  justify-content: end;
 }

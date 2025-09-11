@@ -8,17 +8,18 @@ interface Options {
 const Login = (props: Options) => {
     return (
         <>
-            <main>
+            <main className="login">
                 <h1>{props.isAdmin ? "Admin" : "Student"} Login</h1>
-                <br />
+                <br /><br />
                 <form>
-                    <Prompt type="text" arg="Username" placeholder="e.g: HOD"/>
+                    <Prompt className="error acceptable" type="text" arg="Username" placeholder="e.g: HOD" />
                     <br />
-                    <Prompt type="password" arg="Password" placeholder="e.g: iLOVEjava@420"/>
+                    <Prompt className="acceptable" type="password" arg="Password" placeholder="e.g: iLOVEjava@420" />
                     <br />
+                    <a href="#">Forgot password?</a>
+                    <br />                    
                     <button type="submit">Login</button>
                 </form>
-                <p>Invalid credentials</p>
             </main>
         </>
     )

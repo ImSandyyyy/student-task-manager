@@ -2,6 +2,8 @@ import "./App.css";
 import Home from "./pages/Home";
 import { useNavigate, Route, Routes } from 'react-router-dom'
 import Login from "./pages/Login";
+import AboutUs from "./pages/AboutUs";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   const redirect = useNavigate();
@@ -41,6 +43,12 @@ const App = () => {
                 </button>
               </li>
             </ul>
+            <li>
+              <button type="button" onClick={() => redirect('/dashboard')}>
+                <span className="material-symbols-outlined">assignment</span>
+                <p>Dashboard</p>
+              </button>
+            </li>
           </section>
 
           <section>
@@ -50,7 +58,7 @@ const App = () => {
             </div>
             <ul>
               <li>
-                <button type="button">
+                <button type="button" onClick={() => redirect('/about')}>
                   <span className="material-symbols-outlined">info</span>
                   <p>About</p>
                 </button>
@@ -58,14 +66,16 @@ const App = () => {
             </ul>
           </section>
         </nav>
-      
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path="/login">
-              <Route path="student" element={<Login />} />
-              <Route path="admin" element={<Login isAdmin />} />
-            </Route>
-          </Routes>
+
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path="/login">
+            <Route path="student" element={<Login />} />
+            <Route path="admin" element={<Login isAdmin />} />
+          </Route>
+          <Route path="about" element={<AboutUs />} />
+          <Route path="dashboard" element={<Dashboard />} />
+        </Routes>
       </div>
     </>
   );
