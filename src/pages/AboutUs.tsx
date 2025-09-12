@@ -21,7 +21,12 @@ const AboutUs = () => {
                     </div>
                 </div>
             </main>
-            <Overview pageName="About Us" />
+            <Overview pageName="About Us"
+                summaries={[
+                    { Name: "Github (ImSandyyyy)", Link: "https://github.com/ImSandyyyy", IsAnId: false },
+                    { Name: "Github (D3FAU4T)", Link: "https://github.com/D3FAU4T", IsAnId: false },
+                ]}
+            />
         </>
     )
 }
