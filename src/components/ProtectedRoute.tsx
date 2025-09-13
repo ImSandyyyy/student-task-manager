@@ -1,6 +1,7 @@
 import { useAuth } from '../contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
 import type { ReactNode } from 'react';
+import './ProtectedRoute.css';
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -13,14 +14,7 @@ const ProtectedRoute = ({ children, requireAuth = true, redirectTo = '/' }: Prot
 
     if (isLoading) {
         return (
-            <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100vh',
-                fontSize: '1.2rem',
-                color: 'var(--md-sys-color-text)'
-            }}>
+            <div className="loading-container">
                 Loading...
             </div>
         );

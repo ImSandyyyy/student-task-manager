@@ -13,6 +13,24 @@
     --link-decoration: none;
     --border-radius: 1rem;
     --button-accent: #4e4dff;
+    
+    /* Interactive theme variables */
+    --primary-rgb: 78, 77, 255;
+    --button-hover-bg: rgba(var(--primary-rgb), 0.12);
+    /* Enhanced shadow system for better visibility */
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --card-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+    --card-hover-shadow-light: 0 4px 16px rgba(0, 0, 0, 0.12), 0 8px 32px rgba(0, 0, 0, 0.08);
+    --subtle-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --input-border: #4a5568;
+    --input-focus-border: var(--md-sys-color-primary);
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+    
+    /* Smooth transitions for better interactivity */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+    --transition-slow: 0.35s ease;
 }
 
 * {
@@ -23,6 +41,7 @@
     box-sizing: border-box;
     font-family: "Google Sans", "Roboto", system-ui;
     color: var(--md-sys-color-text);
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
 html,

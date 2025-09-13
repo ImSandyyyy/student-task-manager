@@ -4,6 +4,24 @@
     background-color: var(--md-sys-color-surface);
     padding: 0rem 2rem 2rem 1.3rem;
     height: 90dvh;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    box-shadow: var(--container-shadow);
+}
+
+.wrapper.nav-hidden {
+    padding-left: 2rem;
+}
+
+.header-user-section {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.header-user-info {
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 header {
@@ -14,7 +32,7 @@ header {
     height: 10dvh;
     flex-shrink: 0;
     background-color: var(--md-sys-color-surface);
-
+    box-shadow: var(--container-shadow);
 }
 
 header button span {
@@ -26,6 +44,10 @@ main {
     background-color: var(--md-sys-color-background);
     flex: 1;
     padding: 2rem;
+    transition: all 0.3s ease-in-out;
+    min-width: 0;
+    box-shadow: var(--container-shadow);
+    border: var(--subtle-border);
 }
 
 header>a {
@@ -38,19 +60,67 @@ button {
     border: none;
     padding: 1.5rem;
     background-color: transparent;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--button-hover-bg);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    border-radius: inherit;
+}
+
+button:hover::before {
+    opacity: 1;
 }
 
 button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 1rem;
+    transform: translateY(-1px);
+    box-shadow: var(--card-shadow);
 }
 
 button:active {
-    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(0);
+    transition: transform 0.1s ease;
+}
+
+button:active::before {
+    opacity: 0.8;
 }
 
 nav {
     width: 11rem;
+    min-width: 11rem;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translateX(0);
+    flex-shrink: 0;
+    position: relative;
+}
+
+nav.nav-closed {
+    transform: translateX(-100%);
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+nav.nav-open {
+    transform: translateX(0);
+    width: 11rem;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 section>div {
@@ -121,4 +191,199 @@ li button p {
 .floating-edit-btn span {
     color: var(--md-sys-color-surface) !important;
     font-size: 24px !important;
+}
+
+/* Landscape tablet/desktop adjustments */
+@media (orientation: landscape) and (min-width: 769px) {
+    .wrapper {
+        gap: 1rem;
+        padding: 0rem 1.5rem 1.5rem 1rem;
+    }
+    
+    aside.overview {
+        width: 12rem;
+        padding: 1.5rem;
+    }
+    
+    main {
+        padding: 1.5rem;
+    }
+}
+
+/* Portrait orientation (mobile/tablet) styles */
+@media (orientation: portrait) {
+    .wrapper {
+        gap: 0rem;
+        padding: 0rem 1rem 1rem 1rem;
+        position: relative;
+        height: 88dvh;
+    }
+    
+    .wrapper.nav-hidden {
+        padding-left: 1rem;
+    }
+    
+    header {
+        padding: 0rem 1rem;
+    }
+    
+    /* Navigation overlay on mobile */
+    nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 12rem;
+        min-width: 12rem;
+        background-color: var(--md-sys-color-surface);
+        border-radius: 0 1rem 1rem 0;
+        box-shadow: var(--container-shadow);
+        border: var(--subtle-border);
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        opacity: 1;
+        pointer-events: auto;
+        padding: 1rem;
+        overflow: hidden;
+    }
+    
+    /* Navigation visible state on mobile */
+    nav.nav-open {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    /* Navigation hidden state on mobile */
+    nav.nav-closed {
+        transform: translateX(-100%);
+        opacity: 1;
+        pointer-events: none;
+    }
+    
+    main {
+        padding: 1.5rem;
+        border-radius: 0;
+    }
+    
+    /* Add padding to navigation buttons on mobile */
+    nav li button {
+        padding: 0.75rem 0.75rem;
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    nav li button p {
+        margin-left: 0.75rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    nav section > div {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Adjust header title size for mobile */
+    header > a {
+        font-size: 1.5rem;
+    }
+    
+    /* Mobile header improvements */
+    header {
+        height: 12dvh;
+        padding: 1rem;
+    }
+    
+    .header-user-section {
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    
+    .header-user-info {
+        font-size: 0.8rem;
+        order: 1;
+        width: 100%;
+        text-align: right;
+    }
+    
+    /* Keep theme and logout buttons in a horizontal row */
+    .header-user-section button {
+        order: 2;
+        padding: 0.5rem;
+        min-width: 40px;
+        height: 40px;
+    }
+
+    /* Dashboard mobile improvements */
+    main.aboutUs {
+        padding: 1rem;
+    }
+    
+    /* Hide theme controls (palette) button on mobile ONLY when on dashboard page */
+    .theme-toggle-btn.hide-on-mobile {
+        display: none !important;
+    }
+
+    /* Hide Overview component on mobile by sliding it to the right */
+    aside.overview {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100vh;
+        width: 15rem;
+        z-index: -1;
+        transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .floating-edit-btn {
+        bottom: 2rem !important;
+        right: 2rem !important;
+        width: 48px !important;
+        height: 48px !important;
+    }
+}
+
+/* Landscape mobile/small tablet adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    header {
+        height: 10dvh;
+        padding: 0.5rem 1rem;
+    }
+    
+    .wrapper {
+        height: 90dvh;
+        gap: 0.5rem;
+        padding: 0rem 1rem 0.5rem 1rem;
+    }
+    
+    nav {
+        width: 10rem;
+        min-width: 10rem;
+        padding: 0.75rem;
+    }
+    
+    nav li button {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    main.aboutUs {
+        padding: 0.75rem;
+    }
 }

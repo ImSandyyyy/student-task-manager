@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./pages/Home";
-import { useNavigate, Route, Routes } from 'react-router-dom'
+import { useNavigate, Route, Routes, useLocation } from 'react-router-dom'
 import Login from "./pages/Login";
 import AboutUs from "./pages/AboutUs";
 import Dashboard from "./pages/Dashboard";
@@ -12,11 +12,20 @@ import { useAuth } from "./contexts/AuthContext";
 
 const App = () => {
     const redirect = useNavigate();
+    const location = useLocation();
     const { user, logout } = useAuth();
     const [isThemeControlsOpen, setIsThemeControlsOpen] = useState(false);
+    const [isNavOpen, setIsNavOpen] = useState(true);
+
+    // Check if we're on dashboard route
+    const isDashboardRoute = location.pathname === '/dashboard';
 
     const toggleThemeControls = () => {
         setIsThemeControlsOpen(!isThemeControlsOpen);
+    };
+
+    const toggleNavigation = () => {
+        setIsNavOpen(!isNavOpen);
     };
 
     const handleLogout = () => {
@@ -27,23 +36,30 @@ const App = () => {
     return (
         <>
             <header>
-                <Button icon="menu_open" />
+                <Button 
+                    icon={isNavOpen ? "menu_open" : "menu"} 
+                    onClick={toggleNavigation} 
+                />
                 <a href="/">Student Task Manager</a>
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <div className="header-user-section">
                     {user && (
-                        <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>
+                        <span className="header-user-info">
                             {user.role === 'admin' ? 'Admin' : 'Student'}: {user.username}
                         </span>
                     )}
-                    <Button icon="palette" onClick={toggleThemeControls} />
+                    <Button 
+                        icon="palette" 
+                        className={`theme-toggle-btn ${isDashboardRoute ? 'hide-on-mobile' : ''}`} 
+                        onClick={toggleThemeControls} 
+                    />
                     {user && (
                         <Button icon="logout" onClick={handleLogout} />
                     )}
                 </div>
             </header>
 
-            <div className="wrapper">
-                <nav>
+            <div className={`wrapper ${!isNavOpen ? 'nav-hidden' : ''}`}>
+                <nav className={isNavOpen ? 'nav-open' : 'nav-closed'}>
                     <section>
                         <div>
                             <p>Login</p>

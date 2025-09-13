@@ -7,13 +7,24 @@ main .task-card {
     border-radius: 1rem;
     line-height: 1.7;
     margin-bottom: 1rem;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
     position: relative;
+    box-shadow: var(--card-shadow);
+    cursor: pointer;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-hover-shadow);
 }
 
 .task-card.completed {
     opacity: 0.7;
     background-color: var(--option-cover-color);
+}
+
+.task-card.completed:hover {
+    opacity: 0.8;
 }
 
 .task-content {
@@ -43,13 +54,18 @@ main .task-card {
     height: 18px;
     cursor: pointer;
     accent-color: var(--md-sys-color-surface);
+    transition: all var(--transition-fast);
+}
+
+.task-checkbox:hover {
+    transform: scale(1.1);
 }
 
 .task-card h3 {
     margin: 0;
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-text);
     line-height: 1.4;
 }
 
@@ -88,7 +104,7 @@ main .task-card {
 
 .task-description {
     margin: 0;
-    color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-text);
     opacity: 0.9;
     font-size: 0.9rem;
     line-height: 1.5;
@@ -96,7 +112,7 @@ main .task-card {
 
 .task-due-date {
     margin: 0;
-    color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-text);
     opacity: 0.8;
     font-size: 0.85rem;
     display: flex;
@@ -124,21 +140,47 @@ main .task-card {
     border-radius: 0.5rem !important;
     font-size: 0.8rem !important;
     font-weight: 500 !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    color: var(--md-sys-color-surface) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    transition: all 0.2s ease !important;
+    background-color: rgba(var(--interactive-color-rgb), 0.1) !important;
+    color: var(--md-sys-color-text) !important;
+    border: 1px solid rgba(var(--interactive-color-rgb), 0.2) !important;
+    transition: all var(--transition-fast) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-actions button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(var(--interactive-color-rgb), 0.1), 
+        rgba(var(--interactive-color-rgb), 0.2));
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.task-actions button:hover::before {
+    opacity: 1;
 }
 
 .task-actions button:hover {
-    background-color: rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(var(--interactive-color-rgb), 0.2) !important;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--interactive-color-rgb), 0.3);
+}
+
+.task-actions button:active {
+    transform: translateY(0);
 }
 
 .task-actions button.delete-btn:hover {
     background-color: rgba(239, 68, 68, 0.2) !important;
     border-color: rgba(239, 68, 68, 0.4) !important;
     color: #ef4444 !important;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 .task-actions button span {

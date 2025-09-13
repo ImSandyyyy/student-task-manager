@@ -40,3 +40,76 @@ main.aboutUs img {
   font-size: 1.3rem;
   font-weight: bold;
 }
+
+/* Mobile responsive styles for About Us page - Portrait orientation */
+@media (orientation: portrait) {
+  main.aboutUs h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .profile-container {
+    flex-direction: column;
+    gap: 3rem;
+    min-height: auto;
+    padding: 1rem 0;
+  }
+
+  main.aboutUs img {
+    width: 40vw;
+    max-width: 200px;
+    min-width: 150px;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile > p:first-of-type {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .profile > p:nth-of-type(2) {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .profile > h3 {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+/* Landscape mobile adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+  main.aboutUs h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile-container {
+    flex-direction: row;
+    gap: 2rem;
+    min-height: auto;
+  }
+
+  main.aboutUs img {
+    width: 25vw;
+    max-width: 150px;
+    min-width: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .profile > p:first-of-type {
+    font-size: 1.3rem;
+  }
+
+  .profile > p:nth-of-type(2) {
+    font-size: 1rem;
+  }
+
+  .profile > h3 {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}

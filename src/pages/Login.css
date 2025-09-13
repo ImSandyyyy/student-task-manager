@@ -1,3 +1,8 @@
+/* Login page background styling */
+html, body {
+  background-color: var(--md-sys-color-surface);
+}
+
 main.login {
   flex: 0;
   position: absolute;
@@ -6,7 +11,25 @@ main.login {
   transform: translate(-50%, -50%);
   padding: 3rem;
   width: 25dvw;
-  height: 50dvh;
+  min-height: 50dvh;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background-color: var(--md-sys-color-background);
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.demo-credentials {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  background-color: rgba(var(--primary-rgb), 0.05);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: var(--subtle-border);
+  box-shadow: var(--subtle-shadow);
 }
 
 main.login > h1 {
@@ -14,30 +37,211 @@ main.login > h1 {
 }
 
 input {
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  background: rgba(var(--interactive-color-rgb), 0.1);
+  border: 2px solid rgba(var(--interactive-color-rgb), 0.3);
+  color: var(--md-sys-color-on-background);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
   width: 100%;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+input:focus {
+  outline: none;
+  border-color: rgba(var(--interactive-color-rgb), 0.6);
+  background: rgba(var(--interactive-color-rgb), 0.15);
+  box-shadow: 0 0 0 3px rgba(var(--interactive-color-rgb), 0.2);
+  transform: translateY(-1px);
+}
+
+input:hover {
+  border-color: rgba(var(--interactive-color-rgb), 0.5);
+  background: rgba(var(--interactive-color-rgb), 0.12);
 }
 
 input::placeholder {
-  color: white;
+  color: rgba(var(--interactive-color-rgb), 0.7);
+  transition: color var(--transition-fast);
+}
+
+input:focus::placeholder {
+  color: rgba(var(--interactive-color-rgb), 0.9);
 }
 
 button[type="submit"] {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: var(--border-radius);
   background-color: var(--button-accent);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.2));
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+button[type="submit"]:hover::before {
+  opacity: 1;
 }
 
 button[type="submit"]:hover {
   background-color: #615FFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--interactive-color-rgb), 0.4);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
 }
 
 form > a {
   display: flex;
   justify-content: end;
+}
+
+input::placeholder {
+  color: #888; 
+  opacity: 0.4; 
+}
+
+.register-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  border: 2px solid var(--button-accent);
+  color: var(--button-accent);
+  margin-top: 1rem;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.register-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--button-accent);
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+  z-index: -1;
+}
+
+.register-btn:hover::before {
+  transform: translateY(0);
+}
+
+.register-btn:hover {
+  color: var(--md-sys-color-text) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--interactive-color-rgb), 0.3);
+}
+
+.register-btn {
+  position: relative;
+  z-index: 0;
+}
+
+.register-btn * {
+  position: relative;
+  z-index: 2;
+}
+
+.register-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile responsive styles for login page - Portrait orientation */
+@media (orientation: portrait) {
+  main.login {
+    width: 90dvw;
+    min-width: 280px;
+    max-width: 400px;
+    padding: 2rem;
+    min-height: auto;
+    max-height: 85dvh;
+  }
+  
+  main.login > h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .demo-credentials {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  button[type="submit"], .register-btn {
+    padding: 0.75rem;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .register-btn {
+    margin-top: 1rem;
+  }
+  
+  form > a {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+  main.login {
+    width: 60dvw;
+    max-width: 500px;
+    padding: 1.5rem;
+    max-height: 90dvh;
+  }
+  
+  main.login > h1 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .demo-credentials {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    padding: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  button[type="submit"], .register-btn {
+    padding: 0.6rem;
+    margin-top: 1rem;
+  }
 }

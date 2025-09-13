@@ -1,0 +1,181 @@
+/* Registration page background styling */
+html, body {
+  background-color: var(--md-sys-color-surface);
+}
+
+main.registration {
+  flex: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3rem;
+  width: 30dvw;
+  min-height: 60dvh;
+  background-color: var(--md-sys-color-background);
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+main.registration > h1 {
+    text-align: center;
+}
+
+input {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+input::placeholder {
+  color: white;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--button-accent);
+}
+
+button[type="submit"]:hover {
+  background-color: #615FFF;
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input::placeholder {
+  color: #888; 
+  opacity: 0.4; 
+}
+
+/* Validation message styles */
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.warning-message {
+  color: #ffa726;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.success-message {
+  color: #4caf50;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Input validation border colors */
+input.error {
+  border-color: #ff6b6b;
+}
+
+input.warn {
+  border-color: #ffa726;
+}
+
+input.acceptable {
+  border-color: #4caf50;
+}
+
+.back-to-login-btn {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  border: 2px solid #888;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+.back-to-login-btn:hover {
+  background-color: #888;
+  color: white;
+}
+
+/* Mobile responsive styles for registration page - Portrait orientation */
+@media (orientation: portrait) {
+  main.registration {
+    width: 90dvw;
+    min-width: 300px;
+    max-width: 420px;
+    padding: 2rem;
+    min-height: auto;
+    max-height: 85dvh;
+    overflow-y: auto;
+  }
+  
+  main.registration > h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  button[type="submit"], .back-to-login-btn {
+    padding: 0.75rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .back-to-login-btn {
+    margin-top: 0.75rem;
+  }
+  
+  .error-message, .warning-message, .success-message {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+  main.registration {
+    width: 70dvw;
+    max-width: 600px;
+    padding: 1.5rem;
+    max-height: 90dvh;
+    overflow-y: auto;
+  }
+  
+  main.registration > h1 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    padding: 0.6rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  button[type="submit"], .back-to-login-btn {
+    padding: 0.6rem;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+  }
+  
+  .error-message, .warning-message, .success-message {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+}

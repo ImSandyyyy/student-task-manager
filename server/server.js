@@ -11,6 +11,7 @@ app.use(express.json());
 
 const TASKS_FILE = path.join(__dirname, 'data', 'tasks.json');
 const STUDENT_PROGRESS_FILE = path.join(__dirname, 'data', 'student-progress.json');
+const USERS_FILE = path.join(__dirname, 'data', 'users.json');
 
 async function ensureDataDirectory() {
     const dataDir = path.join(__dirname, 'data');
@@ -62,6 +63,86 @@ async function readStudentProgressFile() {
 async function writeStudentProgressFile(progress) {
     await fs.writeFile(STUDENT_PROGRESS_FILE, JSON.stringify(progress, null, 2));
 }
+
+async function readUsersFile() {
+    try {
+        const data = await fs.readFile(USERS_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        // Initialize with default mock users
+        const defaultUsers = {
+            admin: { password: 'admin123', role: 'admin' },
+            student: { password: 'student123', role: 'student' },
+            HOD: { password: 'iLOVEjava@420', role: 'admin' },
+            john: { password: 'password', role: 'student' }
+        };
+        await writeUsersFile(defaultUsers);
+        return defaultUsers;
+    }
+}
+
+async function writeUsersFile(users) {
+    await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2));
+}
+
+// Authentication endpoints
+app.post('/api/register', async (req, res) => {
+    try {
+        const { username, password, role } = req.body;
+
+        if (!username || !password || !role) {
+            return res.status(400).json({ error: 'Username, password, and role are required' });
+        }
+
+        if (!['admin', 'student'].includes(role)) {
+            return res.status(400).json({ error: 'Role must be either "admin" or "student"' });
+        }
+
+        const users = await readUsersFile();
+
+        if (users[username]) {
+            return res.status(409).json({ error: 'Username already exists' });
+        }
+
+        users[username] = { password, role };
+        await writeUsersFile(users);
+
+        res.status(201).json({ 
+            success: true, 
+            message: 'User registered successfully',
+            user: { username, role }
+        });
+    } catch (error) {
+        console.error('Registration error:', error);
+        res.status(500).json({ error: 'Failed to register user' });
+    }
+});
+
+app.post('/api/login', async (req, res) => {
+    try {
+        const { username, password, role } = req.body;
+
+        if (!username || !password || !role) {
+            return res.status(400).json({ error: 'Username, password, and role are required' });
+        }
+
+        const users = await readUsersFile();
+        const user = users[username];
+
+        if (!user || user.password !== password || user.role !== role) {
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+
+        res.json({ 
+            success: true, 
+            message: 'Login successful',
+            user: { username, role: user.role }
+        });
+    } catch (error) {
+        console.error('Login error:', error);
+        res.status(500).json({ error: 'Failed to authenticate user' });
+    }
+});
 
 app.get('/api/tasks/:username?', async (req, res) => {
     try {
